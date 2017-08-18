@@ -20,7 +20,19 @@
     <p *ngIf="operation.isDebit">-{{operation.montant}} €</p>
     <p *ngIf="!operation.isDebit">+{{operation.montant}} €</p>
     </ion-label>
-    <ion-checkbox [checked]="operation.isComptabilise" (change)="operation.isComptabilise = !operation.isComptabilise"></ion-checkbox>
+    <ion-checkbox [(ngModel)]="operation.isComptabilise"></ion-checkbox>
+  </ion-item>
+</ion-list>
+
+<ion-list *ngIf="operationsOK">
+  <ion-item *ngFor="let operation of operationsOK" >
+    <ion-label>
+    <h2>{{operation.lib}} </h2>
+    <h3 >{{TypePaiement[operation.typePaiement]}} - {{operation.dateSaisie | date:"dd/MM/yyyy"}}</h3>
+    <p *ngIf="operation.isDebit">-{{operation.montant}} €</p>
+    <p *ngIf="!operation.isDebit">+{{operation.montant}} €</p>
+    </ion-label>
+    <ion-checkbox [(ngModel)]="operation.isComptabilise" disabled="true"></ion-checkbox>
   </ion-item>
 </ion-list>
 </ion-content>

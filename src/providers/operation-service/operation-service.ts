@@ -33,6 +33,7 @@ export class OperationServiceProvider {
   }
 
   saveAll(operations: Operation[]){
+    operations.forEach(operation => console.log(operation.isComptabilise));
      localStorage.setItem("operations", JSON.stringify(operations));
   }
 
