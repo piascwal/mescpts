@@ -34,8 +34,8 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
+  primary:    #DCDCDC,
+  secondary:  #D3D3D3,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222
@@ -86,3 +86,8 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+
+.content-md {
+  background-image: url('../assets/bck.jpg');
+}

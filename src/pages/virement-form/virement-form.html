@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Formulaire Virement</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+  <ion-card-header>
+    <ion-icon name="arrow-up"></ion-icon> Nouveau Virement
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Titre</ion-label>
+        <ion-input type="text" [(ngModel)]="virement.lib"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Date du virement</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="datePickerValue"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Montant</ion-label>
+        <ion-input type="number" [(ngModel)]="virement.montant"></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+  </ion-card>
+
+  <button ion-button block ion-button color="secondary" (click)="submitForm()">Enregistrer</button>
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Prélèvement</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-fab top right edge>
+    <button ion-fab mini (click)="moveToCreation()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-icon name="information-circle"></ion-icon> Information
+    </ion-card-header>
+
+    <ion-card-content>
+      Ces prélèvements seront pris en compte à chaque début de mois
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-icon name="list"></ion-icon> Liste des prélèvements
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let prelevement of prelevementList">
+          <h2>{{prelevement.lib}}</h2>
+          <h3>{{prelevement.montant}} €</h3>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
