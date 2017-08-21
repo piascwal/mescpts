@@ -18,6 +18,8 @@ import { HomePage } from '../pages/home/home';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { OperationServiceProvider } from '../providers/operation-service/operation-service';
+import { Facebook } from '@ionic-native/facebook';
+import { LoginPage } from "../pages/login/login";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { OperationServiceProvider } from '../providers/operation-service/operati
     PrelevementPage,
     PrelevementFormPage,
     VirementFormPage,
-    OperationFormPage
+    OperationFormPage,
+    LoginPage
+    
   ],
   imports: [
     BrowserModule,
@@ -44,13 +48,15 @@ import { OperationServiceProvider } from '../providers/operation-service/operati
     PrelevementPage,
     PrelevementFormPage,
     VirementFormPage,
-    OperationFormPage
+    OperationFormPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    OperationServiceProvider
+    OperationServiceProvider,
+    Facebook
   ]
 })
 export class AppModule {}

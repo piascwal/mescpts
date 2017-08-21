@@ -47,4 +47,12 @@ export class OperationsPage implements OnInit  {
     this.operationService.saveAll(this.operations);
   }
 
+  modifyOperation(id: number) {
+    console.log(id);
+  }
+
+    deleteOperation(id: number) {
+    console.log(id);
+  }
+
 }

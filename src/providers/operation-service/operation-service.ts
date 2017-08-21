@@ -37,7 +37,8 @@ export class OperationServiceProvider {
      localStorage.setItem("operations", JSON.stringify(operations));
   }
 
-  deleteOperation(operation: Operation){
+  deleteOperation(id: number){
+    
 
   }
 

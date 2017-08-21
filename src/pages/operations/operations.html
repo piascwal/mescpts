@@ -1,4 +1,3 @@
-
 <ion-header>
 
   <ion-navbar>
@@ -10,29 +9,57 @@
 
 <ion-content padding>
   <button ion-button block ion-button (click)="moveToCreation()">Nouvelle dépense</button>
-   <button ion-button block ion-button (click)="saveAll()">Valider les vérifications</button>
+  <button ion-button block ion-button (click)="saveAll()">Valider les vérifications</button>
 
-<ion-list *ngIf="operations">
-  <ion-item *ngFor="let operation of operations" >
-    <ion-label>
-    <h2>{{operation.lib}} </h2>
-    <h3 >{{TypePaiement[operation.typePaiement]}} - {{operation.dateSaisie | date:"dd/MM/yyyy"}}</h3>
-    <p *ngIf="operation.isDebit">-{{operation.montant}} €</p>
-    <p *ngIf="!operation.isDebit">+{{operation.montant}} €</p>
-    </ion-label>
-    <ion-checkbox [(ngModel)]="operation.isComptabilise"></ion-checkbox>
-  </ion-item>
-</ion-list>
+  <ion-list *ngIf="operations">
+    <ion-item-sliding *ngFor="let operation of operations">
+      <ion-item>
+        <ion-label>
+          <h2>{{operation.lib}} </h2>
+          <h3>{{TypePaiement[operation.typePaiement]}} - {{operation.dateSaisie | date:"dd/MM/yyyy"}}</h3>
+          <p *ngIf="operation.isDebit">-{{operation.montant}} €</p>
+          <p *ngIf="!operation.isDebit">+{{operation.montant}} €</p>
+        </ion-label>
+        <ion-checkbox [(ngModel)]="operation.isComptabilise"></ion-checkbox>
+      </ion-item>
 
-<ion-list *ngIf="operationsOK">
-  <ion-item *ngFor="let operation of operationsOK" >
-    <ion-label>
-    <h2>{{operation.lib}} </h2>
-    <h3 >{{TypePaiement[operation.typePaiement]}} - {{operation.dateSaisie | date:"dd/MM/yyyy"}}</h3>
-    <p *ngIf="operation.isDebit">-{{operation.montant}} €</p>
-    <p *ngIf="!operation.isDebit">+{{operation.montant}} €</p>
-    </ion-label>
-    <ion-checkbox [(ngModel)]="operation.isComptabilise" disabled="true"></ion-checkbox>
-  </ion-item>
-</ion-list>
+
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="modifyOperation(operation.id)">
+        <ion-icon name="open"></ion-icon>
+        Modifier
+      </button>
+        <button ion-button color="secondary" (click)="deleteOperation(operation.id)">
+        <ion-icon name="trash"></ion-icon>
+        Supprimmer
+      </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-list *ngIf="operationsOK">
+    <ion-item-sliding *ngFor="let operation of operationsOK">
+      <ion-item>
+        <ion-label>
+          <h2>{{operation.lib}} </h2>
+          <h3>{{TypePaiement[operation.typePaiement]}} - {{operation.dateSaisie | date:"dd/MM/yyyy"}}</h3>
+          <p *ngIf="operation.isDebit">-{{operation.montant}} €</p>
+          <p *ngIf="!operation.isDebit">+{{operation.montant}} €</p>
+        </ion-label>
+        <ion-checkbox [(ngModel)]="operation.isComptabilise" disabled="true"></ion-checkbox>
+      </ion-item>
+
+
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="modifyOperation(operation.id)">
+        <ion-icon name="open"></ion-icon>
+        Modifier
+      </button>
+        <button ion-button color="secondary" (click)="deleteOperation(operation.id)">
+        <ion-icon name="trash"></ion-icon>
+        Supprimmer
+      </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

@@ -19,8 +19,6 @@ export class Operation {
 
    constructor(){
        this.id= Operation._id++;
-     
-       
        
    }
 }
