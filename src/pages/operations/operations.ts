@@ -1,6 +1,6 @@
 import { OperationFormPage } from './../operation-form/operation-form';
 import { OperationServiceProvider } from './../../providers/operation-service/operation-service';
-import { Operation, TypePaiement } from './../../app/model/operation.model';
+import { Operation } from './../../app/model/operation.model';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
@@ -14,7 +14,6 @@ export class OperationsPage implements OnInit  {
 
   isReady = false;
   operations: Operation[] = [];
-  TypePaiement: typeof TypePaiement = TypePaiement;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public operationService: OperationServiceProvider,  public events: Events) {
      this.initiOperations();
@@ -25,7 +24,11 @@ export class OperationsPage implements OnInit  {
   }
 
   initiOperations() {
+  
     this.operations = this.operationService.getOperations();
+    if(this.operations == null){
+      this.operations = [];
+    }
   }
 
 
@@ -47,12 +50,18 @@ export class OperationsPage implements OnInit  {
     this.operationService.saveAll(this.operations);
   }
 
-  modifyOperation(id: number) {
-    console.log(id);
+  openOperation(operation: Operation) {
+    this.navCtrl.push(OperationFormPage,{operation: operation});
   }
 
     deleteOperation(id: number) {
-    console.log(id);
+    this.operationService.deleteOperation(id).subscribe(itemDeleted => {
+      console.log(itemDeleted);
+      this.events.publish('updateOperation')
+    });
+
   }
+
+
 
 }

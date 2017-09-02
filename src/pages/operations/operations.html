@@ -16,7 +16,7 @@
       <ion-item>
         <ion-label>
           <h2>{{operation.lib}} </h2>
-          <h3>{{TypePaiement[operation.typePaiement]}} - {{operation.dateSaisie | date:"dd/MM/yyyy"}}</h3>
+          <h3>{{operation.typePaiement}} - {{operation.dateSaisie | date:"dd/MM/yyyy"}}</h3>
           <p *ngIf="operation.isDebit">-{{operation.montant}} €</p>
           <p *ngIf="!operation.isDebit">+{{operation.montant}} €</p>
         </ion-label>
@@ -25,7 +25,7 @@
 
 
       <ion-item-options side="right">
-        <button ion-button color="primary" (click)="modifyOperation(operation.id)">
+        <button ion-button color="primary" (click)="openOperation(operation)">
         <ion-icon name="open"></ion-icon>
         Modifier
       </button>
@@ -51,7 +51,7 @@
 
 
       <ion-item-options side="right">
-        <button ion-button color="primary" (click)="modifyOperation(operation.id)">
+        <button ion-button color="primary" (click)="openOperation(operation)">
         <ion-icon name="open"></ion-icon>
         Modifier
       </button>

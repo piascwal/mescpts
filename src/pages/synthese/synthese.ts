@@ -16,12 +16,12 @@ import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 })
 export class SynthesePage {
 
-  somme: number;
+  somme =0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public operationService: OperationServiceProvider,  public events: Events) {
-    this.somme = operationService.getSomme();
+     operationService.getSomme().subscribe(res => this.somme= res);
     this.events.subscribe('updateOperation', () => {
-        this.somme = operationService.getSomme();
+        operationService.getSomme().subscribe(res => this.somme= res);
     });
   }
 

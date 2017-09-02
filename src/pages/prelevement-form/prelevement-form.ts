@@ -1,5 +1,5 @@
 import { OperationServiceProvider } from './../../providers/operation-service/operation-service';
-import { Operation, TypePaiement } from './../../app/model/operation.model';
+import { Operation } from './../../app/model/operation.model';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
@@ -26,7 +26,7 @@ export class PrelevementFormPage {
     this.prelevement.dateSaisie = new Date(this.datePickerValue);
     this.prelevement.isDebit = true;
     this.prelevement.isComptabilise = false;
-    this.prelevement.typePaiement = TypePaiement.PRELEVEMENT;
+    this.prelevement.typePaiement = "PRELEVEMENT";
     this.operationService.saveOperation(this.prelevement);
     this.events.publish('updatePrelevement');
     this.navCtrl.pop();

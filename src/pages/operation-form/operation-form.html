@@ -17,7 +17,7 @@
  <ion-card>
 
     <ion-card-header>
-      Nouvelle dépense
+      Dépense
     </ion-card-header>
     <ion-card-content>
       <ion-list>
@@ -29,7 +29,7 @@
 
       <ion-item>
         <ion-label floating>Moyent de paiement</ion-label>
-        <ion-select [(ngModel)]="typePaySelected">
+        <ion-select [(ngModel)]="operation.typePaiement">
           <ion-option *ngFor="let type of typePay" [value]="type">{{type}}</ion-option>
         </ion-select>
       </ion-item>

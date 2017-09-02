@@ -1,5 +1,5 @@
 import { OperationServiceProvider } from './../../providers/operation-service/operation-service';
-import { Operation, TypePaiement } from './../../app/model/operation.model';
+import { Operation } from './../../app/model/operation.model';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
@@ -32,7 +32,7 @@ export class VirementFormPage {
     this.virement.dateSaisie = new Date(this.datePickerValue);
     this.virement.isDebit = false;
     this.virement.isComptabilise = false;
-    this.virement.typePaiement = TypePaiement.VIREMENT;
+    this.virement.typePaiement = "VIREMENT";
     this.operationService.saveOperation(this.virement);
     this.events.publish('updateVirement');
     this.navCtrl.pop();
